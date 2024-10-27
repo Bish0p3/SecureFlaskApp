@@ -11,6 +11,7 @@ course_data = [
     {"courseID": "5555", "title": "Java 2", "description": "Advanced Java Programming", "credits": 4,
      "term": "Fall"}]
 
+
 @app.route("/")
 @app.route("/index")
 @app.route("/home")
@@ -39,7 +40,8 @@ def enrollment():
     id = request.form.get('courseID')
     title = request.form.get('title')
     term = request.form.get('term')
-    return render_template("enrollment.html", enrollment=True, data={"id":id, "title":title, "term":term})
+    return render_template("enrollment.html", enrollment=True, data={"id": id, "title": title, "term": term})
+
 
 @app.route("/api/")
 @app.route("/api/<idx>")
@@ -50,4 +52,3 @@ def api(idx=None):
         jdata = course_data[int(idx)]
 
     return Response(json.dumps(jdata), mimetype="application/json")
-
